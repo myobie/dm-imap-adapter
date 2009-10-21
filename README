@@ -24,6 +24,10 @@ The specs currently assume you have a test account with test as the password on 
 How to use
 ==========
 
+gem install gemcutter          # unless you already have
+gem tumble                     # unless you already have
+gem install dm-imap-adapter
+
 Check the specs!
 
 Also, do this for your model:

@@ -16,8 +16,11 @@ Gem::Specification.new do |s|
     "README"
   ]
   s.files = [
-    "README",
+    ".gitignore",
+     "README",
+     "Rakefile",
      "VERSION",
+     "dm-imap-adapter.gemspec",
      "lib/dm-imap-adapter.rb",
      "lib/dm-imap-adapter/net_imap_ext.rb",
      "lib/dm-imap-adapter/types.rb",
