@@ -19,6 +19,8 @@ bacon spec/dm-imap-adapter_spec.rb
 
 or use autotest (although I'm not sure I got that setup perfectly).
 
+The specs currently assume you have a test account with test as the password on localhost which has an INBOX. All emails in this inbox will be deleted, just like a test database.
+
 How to use
 ==========
 
