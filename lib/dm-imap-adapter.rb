@@ -5,13 +5,13 @@ require File.dirname(__FILE__) + '/dm-imap-adapter/types'
 
 ### Hack for frozen object problem
 
-module DataMapper
-  module Resource
-    def original_attributes
-      @original_attributes || {} # Fix for frozen crap
-    end
-  end
-end
+# module DataMapper
+#   module Resource
+#     def original_attributes
+#       @original_attributes || {} # Fix for frozen crap
+#     end
+#   end
+# end
 
 ###
 
