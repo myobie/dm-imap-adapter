@@ -1,7 +1,7 @@
 require 'dm-core'
 require 'net/imap'
-require 'lib/dm-imap-adapter/net_imap_ext'
-require 'lib/dm-imap-adapter/types'
+require File.dirname(__FILE__) + '/dm-imap-adapter/net_imap_ext'
+require File.dirname(__FILE__) + '/dm-imap-adapter/types'
 
 ### Hack for frozen object problem
 
