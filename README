@@ -1,0 +1,64 @@
+IMAP Adapter for DataMapper
+===========================
+
+There exist other implementations of an imap adapter but they are either not 0.10 compatible or I couldn't find a working version. Also, I am picky and want to do this right.
+
+Philosophy
+==========
+
+A resource is a mailbox. So you will probably end up with a Gmail::Inbox and a Gmail::Trash. To move an item to the trash you would resource.move_to(Gmail::Trash) [not implemented yet]. Various Types are provided to make it easier to work with the different things like From and To and CC and all of that. These also help with the queries [not implemented yet].
+
+Specs
+=====
+
+I use bacon. It's the best testing library that exists.
+
+gem install bacon
+
+bacon spec/dm-imap-adapter_spec.rb
+
+or use autotest (although I'm not sure I got that setup perfectly).
+
+How to use
+==========
+
+Check the specs!
+
+Also, do this for your model:
+
+class Inbox
+  include DataMapper::Resource
+  include DataMapper::Types::Imap
+  
+  def self.default_repository_name
+    :test_inbox
+  end
+
+  property :uid, UID, :key => true # do we need :key here since UID is a serial?
+  property :message_id, MessageId
+  property :subject, Subject
+  property :sender, Sender
+  property :from, From
+  property :to, To
+  property :body, BodyText
+  property :raw_body, Body
+  property :date, InternalDate
+  property :envelope_date, EnvelopeDate
+  property :size, Size
+  property :sequence, Sequence
+end
+
+How can I help?
+===============
+
+Glad you asked!
+
+There are lots of things that don't work yet, mostly because I don't need them to (all I need is #all and #destroy). Here are the big things that don't work yet:
+
+* #update
+* #create should use update to set any attributes that can't be set during the initial append to the mailbox
+* Flags - a Type needs to be created that manages an array of symbols. Maybe base it off the Enum?
+* Searching should actually use the uid_search method and not rely on the in memory query filter. If you got 1000 emails in your inbox your currently screwed.
+* Figuring out why I had to hack net/imap so much to support dovecot on my machine. Seems strange that I had to open the class like that.
+* Extend other net/imap structs like the Address one.
+* Better specs!
