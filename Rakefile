@@ -8,6 +8,7 @@ begin
     gemspec.homepage = "http://github.com/myobie/dm-imap-adapter"
     gemspec.authors = ["Nathan Herald"]
   end
+  Jeweler::GemcutterTasks.new
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
 end
